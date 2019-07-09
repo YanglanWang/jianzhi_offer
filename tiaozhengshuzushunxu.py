@@ -15,3 +15,4 @@ class Solution:
         return array
 a=Solution()
 print(a.reOrderArray([2,4,6,1,3,5,7]))
+
