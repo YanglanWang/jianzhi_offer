@@ -2,25 +2,29 @@
 class Solution:
     def Permutation(self, ss):
         # write code here
-        result=[]
+        ll=[]
         if not ss:
-            return result
-        l1=list(ss)
-        if len(l1)==1:
+            return ll
+        if len(ss)==1:
             return ss
-        result.append(ss)
-        for i in range(len(l1)):
-            for j in range(len(l1)):
-                tmp=l1[i]
-                l1[i]=l1[j]
-                l1[j]=tmp
-                result_tmp=''.join(l1)
-                l1 = list(ss)
-                if result_tmp not in result:
-                    result.append(result_tmp)
-        result.sort()
-        return result
+        return self.circle(ss)
+
+
+    def circle(self,ss):
+        if len(ss)==2:
+            if ss!=ss[::-1]:
+                return [ss,ss[::-1]]
+            else:
+                return [ss]
+        l_tmp=[]
+        for j in range(len(ss)):
+            for i in self.circle(ss[0:j]+ss[j+1:]):
+                l_=ss[j]+i
+                if l_ not in l_tmp:
+                    l_tmp.append(l_)
+                # result_tmp=''.join(i)
+        return l_tmp
 
 a=Solution()
-b=a.Permutation("abc")
+b=a.Permutation("aa")
 print(b)
