@@ -24,3 +24,20 @@ class Solution:
 a=Solution()
 b=a.minNumberInRotateArray([1,1,1,0,1])
 print(b)
+
+
+
+# -*- coding:utf-8 -*-
+class Solution:
+    def __init__(self):
+        self.ll=[]
+    def Insert(self, num):
+        # write code here
+        self.ll.append(num)
+    def GetMedian(self,ll):
+        # write code here
+        self.ll.sort()
+        if len(self.ll)%2==0:
+            return float((self.ll[len(self.ll)/2-1]+self.ll[len(self.ll)/2])/2)
+        else:
+            return float(self.ll[int(len(self.ll)/2)])
