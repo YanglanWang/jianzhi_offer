@@ -1,31 +1,26 @@
 # -*- coding:utf-8 -*-
 class Solution:
-    def FindGreatestSumOfSubArray(self, array):
+    def NumberOf1Between1AndN_Solution(self, n):
         # write code here
-        result=[]
-        ll=len(array)
-        if ll==1:
-            return array[0]
-        add_tmp=array[0]
         i=1
-        maximum=add_tmp
-        while i<ll:
-            add_tmp+=array[i]
-            if maximum<add_tmp:
-                maximum=add_tmp
-            while add_tmp>=0:
-                i+=1
-                add_tmp += array[i]
-                if maximum<add_tmp:
-                    maximum=add_tmp
-                if i>=ll-1:
-                    break
-            result.append(maximum)
-            add_tmp=0
-            maximum=float("-inf")
+        length=len(str(n))
+        weishu=pow(10,i)
+        result=0
+        while i<=length:
+            a=n//weishu
+            b=n%weishu
+            xishu=pow(10,i-1)
+            result+=xishu*a
+            if b<xishu:
+                result+=0
+            elif b>xishu*2-1:
+                result+=xishu
+            else:
+                result+=b-xishu+1
             i+=1
-        return max(result)
+            weishu=pow(10,i)
+        return result
 
 a=Solution()
-b=a.FindGreatestSumOfSubArray([-2,-8,-1,-5,-9])
+b=a.NumberOf1Between1AndN_Solution(1)
 print(b)
