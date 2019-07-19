@@ -48,8 +48,7 @@ class Solution:
             pNew = RandomListNode(pHead.label)
             pNew.next = pHead.next
             pHead.next = pNew
-            pHead = pHead.next.nejavascript:void(0);
-            xt
+            pHead = pHead.next
         pHead = pStart
         while pHead != None:
             if pHead.random != None:
