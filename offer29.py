@@ -8,6 +8,12 @@ class Solution:
                     tinput[j]=tinput[i]
                     tinput[i]=tmp
         return tinput[0:k]
+
+
+
+
+
+
 a=Solution()
 tinput=[4,5,1,6,2,7,3,8]
 k=4

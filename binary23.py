@@ -38,5 +38,7 @@ class Solution:
         return left and right
 
 a=Solution()
-b=a.VerifySquenceOfBST([4,6,7,5])
+# b=a.VerifySquenceOfBST([4,6,7,5])
+b=a.VerifySquenceOfBST([4,3,5,8,10,9,7])
+
 print(b)
