@@ -41,5 +41,5 @@ class Solution:
         return tmp
 
 a=Solution()
-b=a.Permutation("aa")
+b=a.Permutation("abc")
 print(b)
