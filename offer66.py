@@ -63,27 +63,54 @@
 #             return False
 class Solution:
 
-    def __init__(self):
-        self.vis = {}
+    # def __init__(self):
+    #     self.vis = {}
+    #
+    # def movingCount(self, threshold, rows, cols):
+    #     # write code here
+    #     return self.moving(threshold, rows, cols, 0, 0)
+    #
+    # def moving(self, threshold, rows, cols, row, col):
+    #     if row / 10 + row % 10 + col / 10 + col % 10 > threshold:
+    #         return 0
+    #     if row >= rows or col >= cols or row < 0 or col < 0:
+    #         return 0
+    #     if (row, col) in self.vis:
+    #         return 0
+    #     self.vis[(row, col)] = 1
+    #
+    #     return 1 + self.moving(threshold, rows, cols, row - 1, col) + self.moving(threshold, rows, cols, row + 1,
+    #                                                                               col) + self.moving(threshold, rows,
+    #                                                                                                  cols, row,
+    #                                                                                                  col - 1) + self.moving(
+    #         threshold, rows, cols, row, col + 1)
 
     def movingCount(self, threshold, rows, cols):
         # write code here
-        return self.moving(threshold, rows, cols, 0, 0)
+        matrix = [[0 for i in range(cols)] for j in range(rows)]
+        self.Count(threshold, rows, cols, matrix, 0, 0)
+        sum=0
+        for i in matrix:
+            for j in i:
+                sum+=int(j)
+        return sum
+    def Count(self, threshold, rows, cols, matrix, i, j):
+        list_i =[int(a) for a in list(str(i))]
+        list_j=[int(b) for b in list(str(j))]
 
-    def moving(self, threshold, rows, cols, row, col):
-        if row / 10 + row % 10 + col / 10 + col % 10 > threshold:
-            return 0
-        if row >= rows or col >= cols or row < 0 or col < 0:
-            return 0
-        if (row, col) in self.vis:
-            return 0
-        self.vis[(row, col)] = 1
+        if sum(list_i) + sum(list_j) <= threshold:
+            matrix[i][j] = 1
+            if i - 1 >= 0 and matrix[i - 1][j] == 0 :
+                self.Count(threshold, rows, cols, matrix, i - 1, j)
+            if i + 1 < rows and matrix[i + 1][j]==0:
+                self.Count(threshold, rows, cols, matrix, i + 1, j)
+            if j - 1 >= 0 and matrix[i][j - 1]==0:
+                self.Count(threshold, rows, cols, matrix, i, j - 1)
+            if j + 1 < cols and matrix[i][j + 1]==0:
+                self.Count(threshold, rows, cols, matrix, i, j + 1)
 
-        return 1 + self.moving(threshold, rows, cols, row - 1, col) + self.moving(threshold, rows, cols, row + 1,
-                                                                                  col) + self.moving(threshold, rows,
-                                                                                                     cols, row,
-                                                                                                     col - 1) + self.moving(
-            threshold, rows, cols, row, col + 1)
+
+
 a=Solution()
-b=a.movingCount(2,2,2)
+b=a.movingCount(5,10,10)
 print(b)
